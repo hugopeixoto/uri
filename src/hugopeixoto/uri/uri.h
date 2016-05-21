@@ -1,19 +1,21 @@
 #ifndef HUGOPEIXOTO_URI_URI_H_
 #define HUGOPEIXOTO_URI_URI_H_
 
+#include "hugopeixoto/optional.h"
 #include <string>
 
 namespace uri {
   struct URI {
     std::string scheme;
-    std::string username;
-    std::string password;
+    Optional<std::string> username;
+    Optional<std::string> password;
     std::string hostname;
-    std::string path;
-    uint16_t port;
+    Optional<uint16_t> port;
+    Optional<std::string> path;
+    Optional<std::string> query;
   };
 
-  URI parse(const std::string& uristring);
+  Optional<URI> parse(const std::string& uristring);
 }
 
 #endif
